@@ -1,0 +1,10 @@
+{
+  "name": "vM1_ActivityDim",
+  "lineageTag": "4581b9b9-1533-4543-a777-4241727b38a7",
+  "annotations": [
+    {
+      "name": "TabularEditor_Relationships",
+      "value": "[]"
+    }
+  ]
+}
