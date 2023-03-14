@@ -1,0 +1,6 @@
+{
+  "name": "ActivityKey",
+  "dataType": "int64",
+  "sourceColumn": "ActivityKey",
+  "lineageTag": "1d865023-e4ab-4288-b06e-bb06b46865d1"
+}
