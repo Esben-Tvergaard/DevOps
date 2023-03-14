@@ -1,0 +1,33 @@
+name: BuildAndValidateTabularModel
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  #push:
+  #  branches: [ main ]
+  #pull_request:
+  #  branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  validation:
+    runs-on: windows-latest
+    environment: Dev
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Download Tabular Editor 2.x
+        shell: pwsh
+        run: .\Scripts\DownloadTE2.ps1
+
+      - name: Run a Best Practice Analysis
+        shell: cmd
+        run: TabularEditor.exe .\TestDataset -A -G
+
+      - name: Deploy to Power BI
+        shell: cmd
+        env:
+          SQLDW_CONNECTIONSTRING: ${{ secrets.SQLDW_CONNECTIONSTRING }}
+          AS_CONNECTIONSTRING: ${{ secrets.AS_CONNECTIONSTRING }}
+        run: TabularEditor.exe .\TestDataset -S ".\Scripts\ReplaceDataSourceConnectionString.csx" -D "%AS_CONNECTIONSTRING%" ValidationDataset -O -C -G -E -W
