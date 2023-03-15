@@ -36,4 +36,4 @@ jobs:
         env:
           SQLDW_CONNECTIONSTRING: ${{ secrets.SQLDW_CONNECTIONSTRING }}
           AS_CONNECTIONSTRING: ${{ secrets.AS_CONNECTIONSTRING }}
-        run: TabularEditor.exe .\AdventureWorks -S ".\Scripts\ReplaceDataSourceConnectionString.csx" -D "%AS_CONNECTIONSTRING%" ValidationDataset -O -C -G -E -W
+        run: TabularEditor.exe .\AdventureWorks -D "%AS_CONNECTIONSTRING%" ValidationDataset -O -C -G -E -W
