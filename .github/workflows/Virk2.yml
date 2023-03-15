@@ -33,4 +33,7 @@ jobs:
 
       - name: Deploy to Power BI
         shell: cmd
-        run: TabularEditor.exe .\TestDataset -D "%AS_CONNECTIONSTRING%" ValidationDataset -O -C -G -E -W
+        env:
+          SQLDW_CONNECTIONSTRING: ${{ secrets.SQLDW_CONNECTIONSTRING }}
+          AS_CONNECTIONSTRING: ${{ secrets.AS_CONNECTIONSTRING }}
+        run: TabularEditor.exe .\AdventureWorks -S ".\Scripts\ReplaceDataSourceConnectionString.csx" -D "%AS_CONNECTIONSTRING%" ValidationDataset -O -C -G -E -W
