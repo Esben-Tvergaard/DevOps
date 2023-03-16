@@ -23,7 +23,4 @@ jobs:
 
       - name: Deploy to Power BI
         shell: cmd
-        env:
-          SQLDW_CONNECTIONSTRING: ${{ secrets.SQLDW_CONNECTIONSTRING }}
-          AS_CONNECTIONSTRING: ${{ secrets.AS_CONNECTIONSTRING }}
         run: TabularEditor.exe .\TestDataset -D "%AS_CONNECTIONSTRING%"
