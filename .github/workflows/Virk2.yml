@@ -26,4 +26,4 @@ jobs:
         env:
           SQLDW_CONNECTIONSTRING: ${{ secrets.SQLDW_CONNECTIONSTRING }}
           AS_CONNECTIONSTRING: ${{ secrets.AS_CONNECTIONSTRING }}
-        run: TabularEditor.exe .\TestDataset -D "$AS_CONNECTIONSTRING ValidationDataset" -O -C -G -E -W
+        run: TabularEditor.exe .\TestDataset -D "$AS_CONNECTIONSTRING" ValidationDataset -O -C -G -E -W
